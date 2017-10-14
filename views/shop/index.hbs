@@ -1,102 +1,20 @@
-<br>
-<div class="row">
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="mr-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
+{{# each products }}
+  <div class="row">
+    {{# each this }}
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-block">
+          {{this.title}}
+          <div>
+          <img src="{{this.imagePath}}" alt="{{this.title}}">
+          </div>
+          <h3 class="mr-auto pull-left my-2">${{this.price}}</h3>
+          <a href="#" class="btn btn-success pull-right my-2">Button</a>
+          <div class="clearfix"></div>
+          <p>{{this.description}}</p>
+        </div>
       </div>
     </div>
+    {{/each}}
   </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="mr-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="ml-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div><br>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="mr-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="mr-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="ml-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div><br>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="mr-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="mr-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        This is some text within a card block.
-        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="">
-        <h3 class="ml-auto pull-left my-2">$12</h3>
-        <a href="#" class="btn btn-success pull-right my-2">Button</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
+{{/each}}
