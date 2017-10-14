@@ -1,0 +1,16 @@
+.thumbnail img{
+height: 200px;
+}
+.thumbnail description{
+    color: #7f7f7f;
+}
+.price{
+    font-weight: bold;
+    font-size: 16px;
+}
+.card-block img{
+    width: 100%;
+}
+/* .card{
+    border: none;
+} */
