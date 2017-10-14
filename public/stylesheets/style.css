@@ -9,6 +9,9 @@ height: 200px;
     font-size: 16px;
 }
 .card-block img{
+    min-height: 40vh;
+    max-height: 40vh;
+    /* box-sizing: border-box;     */
     width: 100%;
 }
 /* .card{
