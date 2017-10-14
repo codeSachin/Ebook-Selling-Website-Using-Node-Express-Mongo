@@ -1,0 +1,6 @@
+CSRF protection is added so that if session storage is stolen the hacker can not do anything with that session like loggin in as he user from which he stole the session.
+because session will need a csrf token which can be only provided by the browser on which session was started
+so hackers stay away!!!!!! U CAN NOT D ANYTHING WITH OUR WEB APP!!!!!  WOOOHOOO I am the KING
+
+
+ordering of middleware matters a lot!!!!!!!
