@@ -6,29 +6,31 @@ var passport = require('passport');
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
-router.get('/user/signup',(req, res, next)=>{
+router.get('/signup',(req, res, next)=>{
     var messages = req.flash('error');
     res.render('user/signup', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
   });
   
-  router.post('/user/signup', passport.authenticate('local.signup', {
+  router.post('/signup', passport.authenticate('local.signup', {
     successRedirect: '/user/profile',
     failureRedirect: '/user/signup',
     failureFlash: true
   }));
   
-  router.get('/user/profile', (req, res, next)=>{
+  router.get('/profile', (req, res, next)=>{
     res.render('user/profile');
   });
   
-  router.get('/user/signin', (req, res, next)=>{
+  router.get('/signin', (req, res, next)=>{
     var messages = req.flash('error');
     res.render('user/signin', {csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
   });
   
-  router.post('/user/signin', passport.authenticate('local.signin', {
+  router.post('/signin', passport.authenticate('local.signin', {
     successRedirect: '/user/profile',
     failureRedirect: '/user/signin',
     failureFlash: true
   }));
+  
+  module.exports = router;
   

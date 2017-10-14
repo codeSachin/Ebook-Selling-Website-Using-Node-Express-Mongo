@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var csrf = require('csurf');
 
 var Product = require('../models/products');
 
