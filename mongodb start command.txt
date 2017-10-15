@@ -1,0 +1,1 @@
+mongod.exe --dbpath /Users/"Sachin Saini"/mongo-data --storageEngine=mmapv1
