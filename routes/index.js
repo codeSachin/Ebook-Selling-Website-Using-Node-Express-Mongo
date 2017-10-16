@@ -3,11 +3,12 @@ var router = express.Router();
 var Cart = require('../models/cart');
 
 var Product = require('../models/products');
-
+var Order = require('../models/order');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var successMsg = req.flash('success', )[0];
   Product.find((err, docs)=>{
     var productChunks = [];
     var chunkSize = 3;
@@ -15,7 +16,7 @@ router.get('/', function(req, res, next) {
     {
       productChunks.push(docs.slice(i,i+chunkSize));
     }
-    res.render('shop/index', { title: 'Shopping Cart', products: productChunks });    
+    res.render('shop/index', { title: 'Shopping Cart', products: productChunks, successMsg: successMsg, noMessage: !successMsg });    
   });
 });
 
@@ -44,12 +45,55 @@ router.get('/shopping-cart', (req, res, next)=>{
   res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
-router.get('/checkout', (req, res, next)=>{
+router.get('/checkout', isLoggedIn, (req, res, next)=>{
   if(!req.session.cart){
     return res.redirect('/shopping-cart');
   }
   var cart = new Cart(req.session.cart);
-  res.render('shop/checkout', {total: cart.totalPrice});  
+  var errMsg = req.flash('error')[0];
+
+  res.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noErrors: !errMsg});  
 });
+
+router.post('/checkout', isLoggedIn, (req, res, next)=>{
+  if(!req.session.cart){
+    return res.redirect('/shopping-cart');
+  }
+  var cart = new Cart(req.session.cart);
+
+  var stripe = require("stripe")("sk_test_ojQL4BscQNsNoy6W7UBWlaCY");
+  stripe.charges.create({
+    amount : cart.totalPrice * 100,
+    currency: "usd",
+    source: req.body.stripeToken,
+    description: "Test Charges"
+  },(err, charge)=>{
+    if(err){
+      req.flash('error', err.message);
+      return res.redirect('/checkout');
+    }
+    var order = new Order({
+      user:req.user,
+      cart: cart,
+      address: req.body.address,
+      name: req.body.name,
+      paymentId: charge.id
+    });
+    order.save((err, response)=>{
+      if(!err){
+      req.flash('success', 'Successfully Bought Product');//add nodemailer here
+      req.session.cart = null;
+      res.redirect('/');
+      }
+    });
+  });
+});
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+      return next();
+  }
+  res.redirect('/user/signin');
+}
 
 module.exports = router;
