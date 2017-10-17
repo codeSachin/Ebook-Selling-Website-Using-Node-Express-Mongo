@@ -19,8 +19,13 @@ var userRoutes = require('./routes/user');
 
 var app = express();
 const port = process.env.PORT;
+mongoose.Promise = global.Promise;
 
-mongoose.connect( process.env.MONGODB_URI || 'localhost:27017/shopping');
+//mongoose.connect( process.env.MONGODB_URI || 'localhost:27017/shopping');
+mongoose.connect(process.env.MONGODB_URI || 'localhost:27017/shopping', {
+  useMongoClient: true,
+  promiseLibrary: global.Promise // Deprecation issue again
+});
 require('./config/passport');
 
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
