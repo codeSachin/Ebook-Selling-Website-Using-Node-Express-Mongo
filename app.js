@@ -18,8 +18,9 @@ var userRoutes = require('./routes/user');
 
 
 var app = express();
+const port = process.env.PORT;
 
-mongoose.connect('localhost:27017/shopping');
+mongoose.connect( process.env.MONGODB_URI || 'localhost:27017/shopping');
 require('./config/passport');
 
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
@@ -73,6 +74,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, ()=>console.log('started on port 3000......'));
+app.listen(3000, ()=>console.log(`started on port ${port}......`));
 
 module.exports = app;
