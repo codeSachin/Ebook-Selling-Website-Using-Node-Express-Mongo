@@ -1,6 +1,6 @@
 var Product = require('../models/products');
 var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/shopping');
+// mongoose.connect('localhost:27017/shopping');
 
 
 var products = [
