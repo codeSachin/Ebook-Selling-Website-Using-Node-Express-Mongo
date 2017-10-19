@@ -1,12 +1,12 @@
 var Product = require('../models/products');
 var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/shopping');
+mongoose.connect( process.env.MONGODB_URI || 'localhost:27017/shopping');
 
 
 var products = [
     new Product({
         imagePath: 'https://spark.adobe.com/images/landing/examples/how-to-book-cover.jpg',
-        title: 'HHow to be perfect',
+        title: 'How to be perfect',
         description: 'Wanna be perfect really then see this!!!',
         price: 15
     }),
