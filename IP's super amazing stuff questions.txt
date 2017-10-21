@@ -4,3 +4,5 @@ so hackers stay away!!!!!! U CAN NOT D ANYTHING WITH OUR WEB APP!!!!!  WOOOHOOO 
 
 
 ordering of middleware matters a lot!!!!!!!
+
+For password encryption we used bcrypt library
