@@ -18,7 +18,7 @@ var userRoutes = require('./routes/user');
 
 
 var app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 mongoose.connect( process.env.MONGODB_URI || 'localhost:27017/shopping');
 require('./config/passport');
