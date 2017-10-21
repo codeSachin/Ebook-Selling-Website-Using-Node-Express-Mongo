@@ -78,6 +78,7 @@ router.post('/checkout', isLoggedIn, (req, res, next)=>{
   if(!req.session.cart){
     return res.redirect('/shopping-cart');
   }
+  // console.log(req.user);
   var cart = new Cart(req.session.cart);
 
   var stripe = require("stripe")("sk_test_ojQL4BscQNsNoy6W7UBWlaCY");
@@ -106,6 +107,8 @@ router.post('/checkout', isLoggedIn, (req, res, next)=>{
       }
     });
   });
+  // console.log(req.user);
+  
 });
 
 
