@@ -22,11 +22,11 @@ nodemailer.createTestAccount((err, account) => {
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Fred Foo 👻" <backupsachin1@gmail.com>', // sender address
+        from: '"Ekart Order Confimation" <backupsachin1@gmail.com>', // sender address
         to: email, // list of receivers
-        subject: 'Hello ✔', // Subject line
+        subject: 'Your Order has been confirmed', // Subject line
         text: 'Your Book will be deliverd within 7 business days!!!! Thank You for purchasing with us', // plain text body
-        html: '<b>Hello world?</b>' // html body
+        html: `<h3>Hello ${email} thank you for shopping wih us` // html body
     };
 
     // send mail with defined transport object
