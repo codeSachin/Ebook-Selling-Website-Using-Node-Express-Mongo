@@ -26,7 +26,7 @@ nodemailer.createTestAccount((err, account) => {
         to: email, // list of receivers
         subject: 'Your Order has been confirmed', // Subject line
         text: 'Your Book will be deliverd within 7 business days!!!! Thank You for purchasing with us', // plain text body
-        html: `<h3>Hello ${email} thank you for shopping wih us` // html body
+        html: `<h3>Hello ${email} Your Book will be deliverd within 7 business days!!!! Thank You for purchasing with us` // html body
     };
 
     // send mail with defined transport object
