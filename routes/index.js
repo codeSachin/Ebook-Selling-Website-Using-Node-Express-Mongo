@@ -4,6 +4,7 @@ var Cart = require('../models/cart');
 
 var Product = require('../models/products');
 var Order = require('../models/order');
+var SendMail = require('../public/javascripts/nodemailer');
 
 
 /* GET home page. */
@@ -103,11 +104,14 @@ router.post('/checkout', isLoggedIn, (req, res, next)=>{
       if(!err){
       req.flash('success', 'Successfully Bought Product');//add nodemailer here
       req.session.cart = null;
+      SendMail.sendMail(req.user.email);
       res.redirect('/');
       }
     });
   });
   // console.log(req.user);
+  // console.log(req.user.email);
+  
   
 });
 
