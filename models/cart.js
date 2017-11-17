@@ -30,7 +30,7 @@ module.exports = function Cart(oldCart){
         var arr = [];
         for(var id in this.items)
         {
-            arr.push(this.items[id]);
+            arr.unshift(this.items[id]);
         }
         return arr;
     };
